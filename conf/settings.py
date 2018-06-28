@@ -7,12 +7,12 @@ PLUGIN_ITEMS = {
     "disk": "src.plugins.disk.Disk",
     "memory": "src.plugins.memory.Memory",
     "cpuinfo": "src.plugins.cpuinfo.Cpuinfo",
-    "dera_ssd": "src.plugins.dera_ssd.Dera_ssd",
+    # "nvme_ssd": "src.plugins.nvme_ssd.Nvme_ssd",
 }
 
-API = "http://127.0.0.1:8000/api/server.html"
+API = "http://127.0.0.1:8000/api/server/"
 
-TEST = False
+TEST = True
 
 MODE = "AGENT" # AGENT/SSH/SALT
 
