@@ -1,10 +1,10 @@
 import os,re
 from lib.config import settings
 
-class Dera_ssd(object):
+class Nvme_ssd(object):
     def process(self, cmd_func, test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/dera_ssd.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/nvme_ssd.out'), 'r', encoding='utf-8').read()
 
         else:
             nvme_path = os.path.join(settings.BASEDIR,'nvme-cli-master/nvme')
@@ -19,10 +19,7 @@ class Dera_ssd(object):
         """
         response = {}
 
-        name_list = re.split("\s+",content.split("\n")[0])
-        name_list_end = ' '.join(name_list[6:])
-        name_list = name_list[0:6]
-        name_list.append(name_list_end)
+        name_list = ['node','sn','model','namespace','usage','format','fw_rev']
         for row_line in content.split("\n")[2:]:
             usage_val = re.search('(\d+\.\d+\s*TB\s*/\s*\d+\.\d+\s*TB)', row_line)
             format_val = re.search('\d+\s*B\s*\+\s*\d+\s*B', row_line)
@@ -34,8 +31,8 @@ class Dera_ssd(object):
 
             response[row_line.split(" ")[0]] = dict(zip(name_list,val_list))
             # get device smart_log ##################################
-            smart_log = self.smart_log(row_line.split(" ")[0])
-            response[row_line.split(" ")[0]]['smart_log'] = smart_log
+            # smart_log = self.smart_log(row_line.split(" ")[0])
+            # response[row_line.split(" ")[0]]['smart_log'] = smart_log
             #########################################################
         return response
 
@@ -51,4 +48,5 @@ class Dera_ssd(object):
         output = subprocess.getoutput("sudo {0} smart-log {1}".format(nvme_path,device))
         for row_line in output.split('\n')[1:]:
             response[row_line.split(":")[0].strip()] = row_line.split(":")[1].strip()
+        print(response)
         return response
