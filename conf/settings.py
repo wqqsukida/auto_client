@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import os
 
 BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,7 +14,7 @@ PLUGIN_ITEMS = {
 
 API = "http://127.0.0.1:8000/api/server/"
 
-TEST = True
+TEST = False
 
 MODE = "AGENT" # AGENT/SSH/SALT
 

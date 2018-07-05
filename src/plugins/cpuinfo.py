@@ -1,10 +1,12 @@
+# -*- coding: UTF-8 -*-
+
 import os,platform
 from lib.config import settings
 
 class Cpuinfo(object):
     def process(self, cmd_func, test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/cpuinfo.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/cpuinfo.out'), 'r').read()
 
         else:
             # output = cmd_func("sudo cat /proc/cpuinfo")

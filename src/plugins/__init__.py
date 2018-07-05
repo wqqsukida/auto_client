@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import importlib
 import requests
 from lib.config import settings
@@ -37,7 +39,7 @@ class PluginManager(object):
             # src.plugins.disk.Disk
             info = {'status':True,'data': None,'msg':None}
             try:
-                module_path,cls_name = v.rsplit('.',maxsplit=1)
+                module_path,cls_name = v.rsplit('.',1)
                 module = importlib.import_module(module_path)
                 cls = getattr(module,cls_name)
 
@@ -56,8 +58,12 @@ class PluginManager(object):
 
     def exec_cmd(self,cmd):
         if self.mode == "AGENT":
-            import subprocess
-            result = subprocess.getoutput(cmd)
+            # py3
+            # import subprocess
+            # result = subprocess.getoutput(cmd)
+            # py2
+            import commands
+            result = commands.getoutput(cmd)
         elif self.mode == "SSH":
             import paramiko
             ssh = paramiko.SSHClient()

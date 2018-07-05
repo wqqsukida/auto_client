@@ -1,10 +1,12 @@
+# -*- coding: UTF-8 -*-
+
 import os,re
 from lib.config import settings
 
 class Nvme_ssd(object):
     def process(self, cmd_func, test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/nvme_ssd.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/nvme_ssd.out'), 'r').read()
 
         else:
             nvme_path = os.path.join(settings.BASEDIR,'nvme-cli-master/nvme')

@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import re
 import os
 from lib.config import settings
@@ -6,7 +8,7 @@ class Disk(object):
 
     def process(self,cmd_func,test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/disk.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/disk.out'), 'r').read()
         else:
             output = cmd_func("sudo MegaCli  -PDList -aALL")
 

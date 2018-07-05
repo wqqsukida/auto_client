@@ -1,10 +1,12 @@
+# -*- coding: UTF-8 -*-
+
 import os
 from lib.config import settings
 
 class Board(object):
     def process(self, cmd_func, test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/board.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/board.out'), 'r').read()
         else:
             output = cmd_func("sudo dmidecode -t1")
         return self.parse(output)

@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # 约束实现该接口的类中必须定义xxx方法 --------- Python没有其他语言有
 # interface IFoo:
 #     def exec(self):pass

@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import os
 import re
 from lib.config import settings
@@ -5,7 +7,7 @@ from lib.config import settings
 class Nic(object):
     def process(self, cmd_func, test):
         if test:
-            output = open(os.path.join(settings.BASEDIR, 'files/nic.out'), 'r', encoding='utf-8').read()
+            output = open(os.path.join(settings.BASEDIR, 'files/nic.out'), 'r').read()
             interfaces_info = self._interfaces_ip(output)
         else:
             interfaces_info = self.linux_interfaces(cmd_func)
