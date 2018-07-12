@@ -9,7 +9,7 @@ class Nvme_ssd(object):
             output = open(os.path.join(settings.BASEDIR, 'files/nvme_ssd.out'), 'r').read()
 
         else:
-            nvme_path = os.path.join(settings.BASEDIR,'nvme-cli-master/nvme')
+            nvme_path = os.path.join(settings.NVME_TOOL_PATH,'nvme')
             output = cmd_func("sudo {0} list".format(nvme_path))
         return self.parse(output)
 
@@ -33,8 +33,8 @@ class Nvme_ssd(object):
 
             response[row_line.split(" ")[0]] = dict(zip(name_list,val_list))
             # get device smart_log ##################################
-            # smart_log = self.smart_log(row_line.split(" ")[0])
-            # response[row_line.split(" ")[0]]['smart_log'] = smart_log
+            smart_log = self.smart_log(row_line.split(" ")[0])
+            response[row_line.split(" ")[0]]['smart_log'] = smart_log
             #########################################################
         return response
 
@@ -45,10 +45,11 @@ class Nvme_ssd(object):
         :return:
         '''
         response = {}
-        import subprocess
-        nvme_path = os.path.join(settings.BASEDIR, 'nvme-cli-master/nvme')
-        output = subprocess.getoutput("sudo {0} smart-log {1}".format(nvme_path,device))
+        import commands
+        nvme_path = os.path.join(settings.NVME_TOOL_PATH, 'nvme')
+        output = commands.getoutput("sudo {0} smart-log {1}".format(nvme_path,device))
         for row_line in output.split('\n')[1:]:
-            response[row_line.split(":")[0].strip()] = row_line.split(":")[1].strip()
-        print(response)
+            k = row_line.split(":")[0].strip().replace(' ','_').lower()
+            response[k] = row_line.split(":")[1].strip()
+        # print(response)
         return response

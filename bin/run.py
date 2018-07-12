@@ -10,4 +10,6 @@ from src import script
 
 
 if __name__ == '__main__':
-    script.start()
+    while True:
+        script.start()
+        time.sleep(60)

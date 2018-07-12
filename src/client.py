@@ -24,7 +24,6 @@ class AgentClient(BaseClient):
     def exe(self):
         obj = PluginManager()
         server_dict = obj.exec_plugin()
-        print(server_dict)
         new_hostname = server_dict['basic']['data']['hostname']
         cert_path = os.path.join(settings.BASEDIR,'conf','cert.txt')
 
@@ -38,7 +37,7 @@ class AgentClient(BaseClient):
                 ff.write(new_hostname)
         else:
             server_dict['basic']['data']['hostname'] = old_hostname
-        print('采集到的服务器信息：',server_dict)
+        print('采集到的服务器信息',server_dict)
         self.post_server_info(server_dict)
 
 
