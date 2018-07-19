@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 
+import time
 import os,re
 from lib.config import settings
 
@@ -25,7 +26,7 @@ class Nvme_ssd(object):
         for row_line in content.split("\n")[2:]:
             usage_val = re.search('(\d+\.\d+\s*TB\s*/\s*\d+\.\d+\s*TB)', row_line)
             format_val = re.search('\d+\s*B\s*\+\s*\d+\s*B', row_line)
-            val_list =re.split('\s+',row_line)[0:4]
+            val_list =re.split('\s{2,}',row_line)[0:4]
             if usage_val and format_val:
                 val_list.append(usage_val.group())
                 val_list.append(format_val.group())
@@ -38,7 +39,7 @@ class Nvme_ssd(object):
             #########################################################
         return response
 
-    def smart_log(self,device):
+    def smart_log(self,device,task_id=None):
         '''
         cmd : nvme smart-log device
         :param device:
@@ -52,4 +53,27 @@ class Nvme_ssd(object):
             k = row_line.split(":")[0].strip().replace(' ','_').lower()
             response[k] = row_line.split(":")[1].strip()
         # print(response)
-        return response
+        if task_id:
+            return {'task_id':task_id,'task_res':response}
+        else:
+            return response
+
+    def error_log(self,device,task_id=None):
+        response = {'res':'%s error_log'%device}
+
+        time.sleep(20)
+
+        if task_id:
+            return {'task_id':task_id,'task_res':response}
+        else:
+            return response
+
+    def format(self,device,task_id=None):
+        response = {'res':'%s format success'%device}
+
+        time.sleep(120)
+
+        if task_id:
+            return {'task_id':task_id,'task_res':response}
+        else:
+            return response

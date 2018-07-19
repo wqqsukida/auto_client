@@ -13,6 +13,7 @@ PLUGIN_ITEMS = {
 }
 
 API = "http://10.0.2.17/api/server/"
+TASK_API = "http://10.0.2.17/api/task/"
 
 TEST = False
 
