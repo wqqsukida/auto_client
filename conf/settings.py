@@ -12,6 +12,7 @@ PLUGIN_ITEMS = {
     "nvme_ssd": "src.plugins.nvme_ssd.Nvme_ssd",
 }
 
+API_TOKEN = "7d6766a6s5f76safas657889hj78kf90"
 API = "http://10.0.2.17/api/server/"
 TASK_API = "http://10.0.2.17/api/task/"
 

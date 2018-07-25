@@ -9,6 +9,8 @@ import json
 import os
 import copy_reg
 import types
+import hashlib
+import time
 
 def _pickle_method(m):
     if m.im_self is None:
@@ -24,12 +26,26 @@ class BaseClient(object):
     def __init__(self):
         self.api = settings.API
         self.task_api = settings.TASK_API
+        self.api_token = settings.API_TOKEN
 
     def post_server_info(self,server_dict):
         # requests.post(self.api,data=server_dict) # 1. k=v&k=v,   2.  content-type:   application/x-www-form-urlencoded
-        response = requests.post(self.api,json=server_dict) # 1. 字典序列化；2. 带请求头 content-type:   application/json
+        response = requests.post(self.api,json=server_dict,headers={'auth-token':self.auth_header_val}) # 1. 字典序列化；2. 带请求头 content-type:   application/json
         rep = json.loads(response.text)
         return rep
+
+    @property
+    def auth_header_val(self):
+        ctime = str(time.time())
+        new_key = "%s|%s" % (self.api_token, ctime,)  # asdfuasodijfoausfnasdf|时间戳
+        hs = hashlib.md5()
+        hs.update(new_key.encode('utf-8'))
+        md5_str = hs.hexdigest()
+
+        # 6f800b6a11d3f9c08c77ef8f77b2d460，  # asdfuasodijfoausfnasdf|时间戳
+        auth_header_val = "%s|%s" % (md5_str, ctime,)  # 6f800b6a11d3f9c08c77ef8f77b2d460|时间戳
+
+        return auth_header_val
 
     def exe(self):
         raise NotImplementedError('必须实现exec方法')
@@ -94,7 +110,7 @@ class AgentClient(BaseClient):
 
         print('[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                                                                   task_res))
-        requests.post(self.task_api,json=task_res)
+        response = requests.post(self.task_api,json=task_res,headers={'auth-api':self.auth_header_val})
         
     
 class SaltSshClient(BaseClient):
