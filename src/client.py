@@ -30,9 +30,19 @@ class BaseClient(object):
 
     def post_server_info(self,server_dict):
         # requests.post(self.api,data=server_dict) # 1. k=v&k=v,   2.  content-type:   application/x-www-form-urlencoded
-        response = requests.post(self.api,json=server_dict,headers={'auth-token':self.auth_header_val}) # 1. 字典序列化；2. 带请求头 content-type:   application/json
-        rep = json.loads(response.text)
-        return rep
+        try:
+            response = requests.post(self.api,json=server_dict,headers={'auth-token':self.auth_header_val})
+            # 1. 字典序列化；2. 带请求头 content-type:   application/json
+            rep = json.loads(response.text)
+            return rep
+        except requests.ConnectionError,e :
+            rep = { 'code': 3, 'msg':str(e)}
+            print rep
+            return rep
+        except ValueError,e :
+            rep = { 'code': 3, 'msg':str(e)}
+            print rep
+            return rep
 
     @property
     def auth_header_val(self):
@@ -107,10 +117,13 @@ class AgentClient(BaseClient):
         #     response = requests.post(self.task_api, json=post_res_list)
     
     def task_res_handler(self,task_res):
-
-        print('[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                                                  task_res))
-        response = requests.post(self.task_api,json=task_res,headers={'auth-api':self.auth_header_val})
+        try:
+            print('[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                                                      task_res))
+            response = requests.post(self.task_api, json=task_res, headers={'auth-token': self.auth_header_val})
+        except requests.ConnectionError,e:
+            rep = {'code':3,'msg':str(e)}
+            print rep
         
     
 class SaltSshClient(BaseClient):
