@@ -13,3 +13,4 @@ if __name__ == '__main__':
     while True:
         script.start()
         time.sleep(60)
+

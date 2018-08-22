@@ -26,6 +26,7 @@ class BaseClient(object):
     def __init__(self):
         self.api = settings.API
         self.task_api = settings.TASK_API
+        self.stask_api = settings.STASK_API
         self.api_token = settings.API_TOKEN
 
     def post_server_info(self,server_dict):
@@ -79,15 +80,23 @@ class AgentClient(BaseClient):
         else:
             server_dict['basic']['data']['hostname'] = old_hostname
         print('[%s]POST [client info] to server'%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        # 将client端信息发送给server
         rep = self.post_server_info(server_dict)
-        # 查询server端返回结果是否有任务要执行
+        # 查询server端返回结果是否有ssd任务要执行
         task_list = rep.get('task',None)
+        # 查询server端返回结果是否有任务要执行
+        server_task_list = rep.get('stask',None)
         if task_list:
             self.post_task_res(task_list)
-
-
+        if server_task_list:
+            self.post_stask_res(server_task_list)
 
     def post_task_res(self,task_list):
+        '''
+        发送ssd任务结果
+        :param task_list:
+        :return:
+        '''
         from src.plugins import nvme_ssd
         from multiprocessing import Pool
         import os
@@ -115,12 +124,40 @@ class AgentClient(BaseClient):
         #     # 将任务执行结果发送给服务端
         #     print('[%s]POST [client task_res] to server'%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         #     response = requests.post(self.task_api, json=post_res_list)
-    
+
     def task_res_handler(self,task_res):
         try:
             print('[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                                                                       task_res))
             response = requests.post(self.task_api, json=task_res, headers={'auth-token': self.auth_header_val})
+        except requests.ConnectionError,e:
+            rep = {'code':3,'msg':str(e)}
+            print rep
+
+    def post_stask_res(self,server_task_list):
+        '''
+        发送主机任务结果
+        :param server_task_list:
+        :return:
+        '''
+        from multiprocessing import Pool
+        p = Pool()
+        for st in server_task_list:
+            res = p.apply_async(self.do_stask,args=(st['stask_content'],st['stask_id']),callback=self.stask_res_handler)
+        p.close()    
+    
+    def do_stask(self,content,stask_id):
+        '''执行主机任务'''
+        import subprocess
+        res = subprocess.Popen(content,shell=True, stdout=subprocess.PIPE)
+        return {'stask_id':stask_id,'stask_res':{content:res.stdout.read()}}
+    
+    def stask_res_handler(self,stask_res):
+        ''''''
+        try:
+            print('[{0}]POST [client stask_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                                                      stask_res))
+            response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
         except requests.ConnectionError,e:
             rep = {'code':3,'msg':str(e)}
             print rep
