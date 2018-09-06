@@ -16,6 +16,7 @@ API_TOKEN = "7d6766a6s5f76safas657889hj78kf90"
 API = "http://10.0.2.17/api/server/"
 TASK_API = "http://10.0.2.17/api/task/"
 STASK_API = "http://10.0.2.17/api/stask/"
+FILE_API = "http://10.0.2.17/api/file/"
 
 TEST = False
 

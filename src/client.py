@@ -11,6 +11,7 @@ import copy_reg
 import types
 import hashlib
 import time
+import uuid
 
 def _pickle_method(m):
     if m.im_self is None:
@@ -27,6 +28,7 @@ class BaseClient(object):
         self.api = settings.API
         self.task_api = settings.TASK_API
         self.stask_api = settings.STASK_API
+        self.file_api = settings.FILE_API
         self.api_token = settings.API_TOKEN
 
     def post_server_info(self,server_dict):
@@ -143,26 +145,48 @@ class AgentClient(BaseClient):
         from multiprocessing import Pool
         p = Pool()
         for st in server_task_list:
-            res = p.apply_async(self.do_stask,args=(st['stask_content'],st['stask_id']),callback=self.stask_res_handler)
+            res = p.apply_async(func=self.do_stask,
+                                args=(st['stask_content'],st['stask_id'],
+                                      st['stask_hasfile'],st['stask_file_url']),
+                                callback=self.stask_res_handler)
         p.close()    
     
-    def do_stask(self,content,stask_id):
+    def do_stask(self,content,stask_id,hasfile,file_url):
         '''执行主机任务'''
         import subprocess
         res = subprocess.Popen(content,shell=True, stdout=subprocess.PIPE)
-        return {'stask_id':stask_id,'stask_res':{content:res.stdout.read()}}
+        res.wait()
+
+        return {'stask_id':stask_id,'stask_res':{content:res.stdout.read()},
+                'hasfile':hasfile,'file_url':file_url}
     
     def stask_res_handler(self,stask_res):
         ''''''
         try:
+            if stask_res.get('hasfile'):
+                # 拼接该任务唯一文件名
+                fn = stask_res['file_url'].rsplit('/',1)[-1]
+                file_name = '{0}_{1}'.format(fn,uuid.uuid1())
+                # 获取主机名
+                cert_path = os.path.join(settings.BASEDIR, 'conf', 'cert.txt')
+                f = open(cert_path, mode='r')
+                hostname  = f.read()
+                f.close()
+                # 以生成的唯一文件名发送至server
+                requests.post(self.file_api,data={'hostname':hostname,'stask_id':stask_res['stask_id']},
+                              files={'task_file': (file_name, open(stask_res['file_url'], 'rb'))})
+
             print('[{0}]POST [client stask_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                                                                       stask_res))
             response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
+
         except requests.ConnectionError,e:
             rep = {'code':3,'msg':str(e)}
             print rep
-        
-    
+        except Exception ,e:
+            requests.post(self.stask_api,json={'stask_id':stask_res['stask_id'],'error_msg':{'error':str(e)}},
+                          headers={'auth-token': self.auth_header_val})
+
 class SaltSshClient(BaseClient):
     pass
     # def task(self,host):
