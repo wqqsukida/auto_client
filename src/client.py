@@ -5,13 +5,18 @@ import requests
 from src.plugins import PluginManager
 from lib.config import settings
 # from concurrent.futures import ThreadPoolExecutor
+from multiprocessing import Process,Pool
 import json
 import os
 import copy_reg
 import types
 import hashlib
 import time
+import datetime
 import uuid
+import subprocess
+import copy
+import importlib
 
 def _pickle_method(m):
     if m.im_self is None:
@@ -30,6 +35,7 @@ class BaseClient(object):
         self.stask_api = settings.STASK_API
         self.file_api = settings.FILE_API
         self.api_token = settings.API_TOKEN
+        self.task_res_path = os.path.join(settings.BASEDIR,'task_handler/res/res.json')
 
     def post_server_info(self,server_dict):
         # requests.post(self.api,data=server_dict) # 1. k=v&k=v,   2.  content-type:   application/x-www-form-urlencoded
@@ -86,12 +92,157 @@ class AgentClient(BaseClient):
         rep = self.post_server_info(server_dict)
         # 查询server端返回结果是否有ssd任务要执行
         task_list = rep.get('task',None)
-        # 查询server端返回结果是否有任务要执行
-        server_task_list = rep.get('stask',None)
         if task_list:
             self.post_task_res(task_list)
+        # 查询server端返回结果是否有主机任务要执行
+        server_task_list = rep.get('stask',None)
         if server_task_list:
-            self.post_stask_res(server_task_list)
+            p = Process(target=self.do_stask,args=(server_task_list,))
+            p.start()
+
+        self.post_res_json()
+
+    def post_res_json(self):
+        '''
+        每次循环上报任务结果
+        :return:
+        '''
+        with open(self.task_res_path,'rb') as f:
+            res_json = json.load(f)
+        if res_json:
+            res_json_copy = copy.deepcopy(res_json) #copy一份原list来解决for循环索引串位问题
+            try:
+                for task_res in res_json:
+                    '''1:新任务 2:执行完成 3:执行失败 4:执行暂停 5:执行中'''
+                    if task_res[ "status_code" ] == 2 or task_res[ "status_code" ] == 3:
+                        requests.post(self.stask_api, json=task_res, headers={'auth-token': self.auth_header_val})
+                        print('[{0}]POST [client stask_res: {1}] to server'.format(
+                            datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),task_res))
+                        res_json_copy.remove(task_res)
+                        # print(res_json_copy)
+                        json.dump(res_json_copy,open(self.task_res_path,'wb'))
+            except requests.ConnectionError, e:
+                rep = {'code': 3, 'msg': str(e)}
+                print rep
+
+    def do_stask(self,server_task_list):
+        '''
+        开启进程池执行任务列表
+        :param server_task_list:
+        :return:
+        '''
+        if not os.path.exists(self.task_res_path):
+            json.dump({},open(self.task_res_path,'wb'))
+        p = Pool()
+        for st in server_task_list:
+            res = p.apply(func=self.stask_process,
+                                args=(st['stask_id'],st['script_name'],st['args_str']),
+                                )
+        p.close()
+        # for st in server_task_list:
+        #     stask_res = self.stask_process(st['stask_id'],st['script_name'],st['args_str'])
+        #     self.res_callback(stask_res)
+            
+    def stask_process(self,stask_id,script_name,args_str=''):
+        '''
+        单个任务进程执行函数
+        :param stask_id:
+        :param script_name:
+        :param args_str:
+        :return:
+        '''
+        script_file = os.path.join(settings.BASEDIR,'task_handler/script','%s.sh'%script_name)
+        # res_file = os.path.join(settings.BASEDIR,'task_handler/res/task_file_%s')%stask_id
+        
+        stask_res = {"stask_id": stask_id, "status_code": 5, "run_time": "",
+                     "message": "", "data": { script_name: "" } }
+
+        if os.path.exists(script_file): # 开始执行任务脚本
+            # stask_res['start_time'] = time.time()
+            start_time = datetime.datetime.now()
+            try:
+                res = subprocess.Popen('sudo sh {script} {args}'.format(script=script_file,args=args_str),
+                                       shell=True, stdout=subprocess.PIPE)
+                res.wait()
+                os.rename("/tmp/task_file", "{0}_{1}".format("/tmp/task_file", stask_id)) #重新命名为唯一文件
+                # stask_res["end_time"] = time.time()
+                end_time = datetime.datetime.now()
+                run_time = end_time - start_time
+                stask_res["run_time"] = str(run_time)
+                stask_res["status_code"] = 2
+                stask_res["data"][script_name] = res.stdout.read()  
+            except Exception as e:
+                # stask_res["end_time"] = time.time()
+                end_time = datetime.datetime.now()
+                run_time = end_time - start_time
+                stask_res["run_time"] = str(run_time)
+                stask_res["status_code"] = 3
+                stask_res["data"][script_name] = str(e)
+                stask_res["message"] = str(e)
+        
+        self.res_callback(stask_res)
+        # return stask_res
+
+    def res_callback(self,stask_res):
+        # 添加任务结果至res.json
+        with open(self.task_res_path,'rb') as f:
+            res_json = json.load(f)
+        res_json.append(stask_res)
+        # print(res_json)
+        json.dump(res_json, open(self.task_res_path, 'wb'))
+        # 上传任务文件
+        # res_file = os.path.join(settings.BASEDIR, 'task_handler/res/task_file_%s') % stask_res['stask_id']
+        res_file = "/tmp/task_file_%s"%stask_res['stask_id']
+        if os.path.exists(res_file):
+            # 获取主机名
+            cert_path = os.path.join(settings.BASEDIR, 'conf', 'cert.txt')
+            f = open(cert_path, mode='r')
+            hostname = f.read()
+            f.close()
+            # task_file_id发送至server
+            requests.post(self.file_api, data={'hostname': hostname, 'stask_id': stask_res['stask_id']},
+                          headers={'auth-token': self.auth_header_val},
+                          files={'task_file': open(res_file, 'rb')},
+                          )
+            print('[{0}]POST [task_file: {1}] to server'.format(
+                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), res_file))
+
+    # def do_stask(self,content,stask_id,hasfile,file_url):                                                4
+    #     '''执行主机任务'''
+    #     import subprocess
+    #     res = subprocess.Popen(content,shell=True, stdout=subprocess.PIPE)
+    #     res.wait()
+    #
+    #     return {'stask_id':stask_id,'stask_res':{content:res.stdout.read()},
+    #             'hasfile':hasfile,'file_url':file_url}
+
+    # def stask_res_handler(self,stask_res):
+    #     ''''''
+    #     try:
+    #         if stask_res.get('hasfile'):
+    #             # 拼接该任务唯一文件名
+    #             fn = stask_res['file_url'].rsplit('/',1)[-1]
+    #             file_name = '{0}_{1}'.format(fn,uuid.uuid1())
+    #             # 获取主机名
+    #             cert_path = os.path.join(settings.BASEDIR, 'conf', 'cert.txt')
+    #             f = open(cert_path, mode='r')
+    #             hostname  = f.read()
+    #             f.close()
+    #             # 以生成的唯一文件名发送至server
+    #             requests.post(self.file_api,data={'hostname':hostname,'stask_id':stask_res['stask_id']},
+    #                           headers={'auth-token': self.auth_header_val},
+    #                           files={'task_file': (file_name, open(stask_res['file_url'], 'rb'))})
+    #
+    #         print('[{0}]POST [client stask_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+    #                                                                   stask_res))
+    #         response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
+    #
+    #     except requests.ConnectionError,e:
+    #         rep = {'code':3,'msg':str(e)}
+    #         print rep
+    #     except Exception ,e:
+    #         requests.post(self.stask_api,json={'stask_id':stask_res['stask_id'],'error_msg':{'error':str(e)}},
+    #                       headers={'auth-token': self.auth_header_val})
 
     def post_task_res(self,task_list):
         '''
@@ -135,57 +286,6 @@ class AgentClient(BaseClient):
         except requests.ConnectionError,e:
             rep = {'code':3,'msg':str(e)}
             print rep
-
-    def post_stask_res(self,server_task_list):
-        '''
-        发送主机任务结果
-        :param server_task_list:
-        :return:
-        '''
-        from multiprocessing import Pool
-        p = Pool()
-        for st in server_task_list:
-            res = p.apply_async(func=self.do_stask,
-                                args=(st['stask_content'],st['stask_id'],
-                                      st['stask_hasfile'],st['stask_file_url']),
-                                callback=self.stask_res_handler)
-        p.close()    
-    
-    def do_stask(self,content,stask_id,hasfile,file_url):
-        '''执行主机任务'''
-        import subprocess
-        res = subprocess.Popen(content,shell=True, stdout=subprocess.PIPE)
-        res.wait()
-
-        return {'stask_id':stask_id,'stask_res':{content:res.stdout.read()},
-                'hasfile':hasfile,'file_url':file_url}
-    
-    def stask_res_handler(self,stask_res):
-        ''''''
-        try:
-            if stask_res.get('hasfile'):
-                # 拼接该任务唯一文件名
-                fn = stask_res['file_url'].rsplit('/',1)[-1]
-                file_name = '{0}_{1}'.format(fn,uuid.uuid1())
-                # 获取主机名
-                cert_path = os.path.join(settings.BASEDIR, 'conf', 'cert.txt')
-                f = open(cert_path, mode='r')
-                hostname  = f.read()
-                f.close()
-                # 以生成的唯一文件名发送至server
-                requests.post(self.file_api,data={'hostname':hostname,'stask_id':stask_res['stask_id']},
-                              files={'task_file': (file_name, open(stask_res['file_url'], 'rb'))})
-
-            print('[{0}]POST [client stask_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                                                      stask_res))
-            response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
-
-        except requests.ConnectionError,e:
-            rep = {'code':3,'msg':str(e)}
-            print rep
-        except Exception ,e:
-            requests.post(self.stask_api,json={'stask_id':stask_res['stask_id'],'error_msg':{'error':str(e)}},
-                          headers={'auth-token': self.auth_header_val})
 
 class SaltSshClient(BaseClient):
     pass
