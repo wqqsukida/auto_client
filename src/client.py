@@ -96,12 +96,14 @@ class AgentClient(BaseClient):
             self.post_task_res(task_list)
         # 查询server端返回结果是否有主机任务要执行
         server_task_list = rep.get('stask',None)
+        from task_handler.do_task import Do_task
+        dt_obj = Do_task()
         if server_task_list:
-            p = Process(target=self.do_stask,args=(server_task_list,))
+            p = Process(target=dt_obj.do_stask,args=(server_task_list,))
             p.start()
 
-        self.post_res_json()
-
+        dt_obj.post_res_json()
+    """    
     def post_res_json(self):
         '''
         每次循环上报任务结果
@@ -164,7 +166,9 @@ class AgentClient(BaseClient):
                 res = subprocess.Popen('sudo sh {script} {args}'.format(script=script_file,args=args_str),
                                        shell=True, stdout=subprocess.PIPE)
                 res.wait()
-                os.rename("/tmp/task_file", "{0}_{1}".format("/tmp/task_file", stask_id)) #重新命名为唯一文件
+                # 将任务生成文件重新命名
+                if os.path.exists("/tmp/task_file"):
+                    os.rename("/tmp/task_file", "{0}_{1}".format("/tmp/task_file", stask_id))
                 # stask_res["end_time"] = time.time()
                 end_time = datetime.datetime.now()
                 run_time = end_time - start_time
@@ -199,14 +203,18 @@ class AgentClient(BaseClient):
             f = open(cert_path, mode='r')
             hostname = f.read()
             f.close()
-            # task_file_id发送至server
-            requests.post(self.file_api, data={'hostname': hostname, 'stask_id': stask_res['stask_id']},
-                          headers={'auth-token': self.auth_header_val},
-                          files={'task_file': open(res_file, 'rb')},
-                          )
-            print('[{0}]POST [task_file: {1}] to server'.format(
-                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), res_file))
-
+            # task_file发送至server
+            try:
+                requests.post(self.file_api, data={'hostname': hostname, 'stask_id': stask_res['stask_id']},
+                              headers={'auth-token': self.auth_header_val},
+                              files={'task_file': open(res_file, 'rb')},
+                              )
+                print('[{0}]POST [task_file: {1}] to server'.format(
+                    datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), res_file))
+            except requests.ConnectionError, e:
+                rep = {'code': 3, 'msg': str(e)}
+                print rep
+    """          
     # def do_stask(self,content,stask_id,hasfile,file_url):                                                4
     #     '''执行主机任务'''
     #     import subprocess

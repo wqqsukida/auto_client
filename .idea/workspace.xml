@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="585c2ca0-5906-44f3-a855-6b5e90228694" name="Default" comment="添加上传任务生成文件方法">
-      <change afterPath="$PROJECT_DIR$/task_handler/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/task_handler/do_task.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/res/res.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/dd.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/dd10m.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/dd6m.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/dd8m.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/hostname.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/ls.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_handler/script/pwd.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/MegaSAS.log" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MegaSAS.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/hostname.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/hostname.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/ls.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/ls.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/pwd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/pwd.sh" afterDir="false" />
     </list>
     <ignored path="auto_client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,12 +67,12 @@
       <file leaf-file-name="client.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="207" column="79" selection-start-line="207" selection-start-column="79" selection-end-line="207" selection-end-column="79" />
+            <state relative-caret-position="1826">
+              <caret line="83" column="28" lean-forward="true" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
               <folding>
                 <element signature="e#25#40#0" expanded="true" />
-                <element signature="e#9154#10401#0" />
-                <element signature="e#10452#10882#0" />
+                <element signature="e#3358#8312#1" />
+                <element signature="e#8327#8431#0" />
               </folding>
             </state>
           </provider>
@@ -101,6 +95,7 @@
       <find>stask_api</find>
       <find>cert_path</find>
       <find>settings</find>
+      <find>Do_task</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,10 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/plugins/base.py" />
-        <option value="$PROJECT_DIR$/bin/gb.py" />
-        <option value="$PROJECT_DIR$/bin/md.py" />
-        <option value="$PROJECT_DIR$/bin/test.py" />
         <option value="$PROJECT_DIR$/lib/__init__.py" />
         <option value="$PROJECT_DIR$/files/res.json" />
         <option value="$PROJECT_DIR$/files/dera_ssd.out" />
@@ -151,15 +142,19 @@
         <option value="$PROJECT_DIR$/conf/settings.py" />
         <option value="$PROJECT_DIR$/task_handler/res/1314214.py" />
         <option value="$PROJECT_DIR$/task_handler/res/11111111111.py" />
-        <option value="$PROJECT_DIR$/task_handler/do_task.py" />
         <option value="$PROJECT_DIR$/task_handler/res/res.json" />
         <option value="$PROJECT_DIR$/queue_test.py" />
         <option value="$PROJECT_DIR$/bin/process_multi.py" />
-        <option value="$PROJECT_DIR$/src/client.py" />
         <option value="$PROJECT_DIR$/task_handler/script/dd6m.sh" />
         <option value="$PROJECT_DIR$/task_handler/script/dd8m.sh" />
         <option value="$PROJECT_DIR$/task_handler/script/dd10m.sh" />
         <option value="$PROJECT_DIR$/task_handler/script/dd.sh" />
+        <option value="$PROJECT_DIR$/task_handler/script/hostname.sh" />
+        <option value="$PROJECT_DIR$/task_handler/script/ls.sh" />
+        <option value="$PROJECT_DIR$/task_handler/script/pwd.sh" />
+        <option value="$PROJECT_DIR$/task_handler/script/post_test.py" />
+        <option value="$PROJECT_DIR$/src/client.py" />
+        <option value="$PROJECT_DIR$/task_handler/do_task.py" />
       </list>
     </option>
   </component>
@@ -199,24 +194,12 @@
             <path>
               <item name="auto_client" type="b2602c69:ProjectViewProjectNode" />
               <item name="auto_client" type="462c0819:PsiDirectoryNode" />
-              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="auto_client" type="b2602c69:ProjectViewProjectNode" />
               <item name="auto_client" type="462c0819:PsiDirectoryNode" />
               <item name="task_handler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="auto_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="auto_client" type="462c0819:PsiDirectoryNode" />
-              <item name="task_handler" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="auto_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="auto_client" type="462c0819:PsiDirectoryNode" />
-              <item name="task_handler" type="462c0819:PsiDirectoryNode" />
-              <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,17 +214,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/task_script" />
-      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin\pk" />
-      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/task_handler/script" />
       <recent name="$PROJECT_DIR$/script/pwd" />
       <recent name="$PROJECT_DIR$/script/ls" />
       <recent name="$PROJECT_DIR$/script/hostname" />
       <recent name="$PROJECT_DIR$/script/dd" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test_script" />
+      <recent name="$PROJECT_DIR$/task_handler" />
+      <recent name="$PROJECT_DIR$/task_script" />
+      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin\pk" />
+      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -289,7 +274,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/process_multi.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_script/process_multi.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -327,7 +312,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/rpost.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_script/rpost.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -478,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536227325503</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="修改任务进程执行方式，任务上传方式，文件上传方式">
+      <created>1537174041979</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1537174041980</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -500,8 +492,8 @@
       <window_info anchor="bottom" id="Run" order="4" weight="0.29369798" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32818073" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936978" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49893048" visible="true" weight="0.43638524" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13048129" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49893048" visible="true" weight="0.29845423" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13048129" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32994652" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32936978" />
@@ -568,7 +560,8 @@
     <MESSAGE value="原客户端上报后，server若无相应，client会报错停止继续上报；修改后会抛出异常，继续上报" />
     <MESSAGE value="添加处理server_task、返回给server端处理结果的方法" />
     <MESSAGE value="添加上传任务生成文件方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加上传任务生成文件方法" />
+    <MESSAGE value="修改任务进程执行方式，任务上传方式，文件上传方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改任务进程执行方式，任务上传方式，文件上传方式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,16 +569,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bin/d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="181" column="33" lean-forward="true" selection-end-line="189" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/config/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="638">
@@ -603,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="25" column="98" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/board.out">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -620,24 +596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/run_daemon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-309">
-          <caret line="138" column="19" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/harker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -648,7 +610,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/open_file.py">
+    <entry file="file://$PROJECT_DIR$/test_script/open_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
@@ -683,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="71" column="3" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -701,20 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -741,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="41" column="16" lean-forward="true" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/cpuinfo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-264">
@@ -768,15 +702,6 @@
           <caret line="56" column="19" lean-forward="true" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="58" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/ls.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/pwd.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/hostname.sh">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/task_handler/res/1314214.py" />
     <entry file="file://$PROJECT_DIR$/task_handler/res/11111111111.py" />
@@ -808,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/do_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" selection-start-line="16" selection-end-line="60" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queue_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -822,13 +740,6 @@
           <folding>
             <element signature="e#119#173#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/res/res.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -860,9 +771,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/process_multi.py">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/hostname.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
+        <state relative-caret-position="22">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/ls.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/pwd.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/res/res.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="e#25#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_script/d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1452" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/run_daemon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3036">
+          <caret line="138" column="19" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_script/process_multi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
           <caret line="14" column="8" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="e#123#163#0" expanded="true" />
@@ -870,14 +855,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_script/post_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1562">
+          <caret line="71" column="3" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_script/rpost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/do_task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="207" column="79" selection-start-line="207" selection-start-column="79" selection-end-line="207" selection-end-column="79" />
+        <state relative-caret-position="1826">
+          <caret line="83" column="28" lean-forward="true" selection-start-line="83" selection-start-column="28" selection-end-line="83" selection-end-column="28" />
           <folding>
             <element signature="e#25#40#0" expanded="true" />
-            <element signature="e#9154#10401#0" />
-            <element signature="e#10452#10882#0" />
+            <element signature="e#3358#8312#1" />
+            <element signature="e#8327#8431#0" />
           </folding>
         </state>
       </provider>
