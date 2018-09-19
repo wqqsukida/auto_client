@@ -63,7 +63,7 @@ class Do_task(client.BaseClient):
         :param args_str:
         :return:
         '''
-        script_file = os.path.join(settings.BASEDIR, 'task_handler/script', '%s.sh' % script_name)
+        script_file = os.path.join(settings.BASEDIR, 'task_handler/script', '%s' % script_name)
         # res_file = os.path.join(settings.BASEDIR,'task_handler/res/task_file_%s')%stask_id
 
         stask_res = {"stask_id": stask_id, "status_code": 5, "run_time": "",
