@@ -36,6 +36,12 @@ class BaseClient(object):
         self.file_api = settings.FILE_API
         self.api_token = settings.API_TOKEN
         self.task_res_path = os.path.join(settings.BASEDIR,'task_handler/res/res.json')
+        # 获取主机名
+        cert_path = os.path.join(settings.BASEDIR, 'conf', 'cert.txt')
+        f = open(cert_path, mode='r')
+        hostname = f.read()
+        f.close()
+        self.hostname = hostname
 
     def post_server_info(self,server_dict):
         # requests.post(self.api,data=server_dict) # 1. k=v&k=v,   2.  content-type:   application/x-www-form-urlencoded
@@ -53,6 +59,36 @@ class BaseClient(object):
             print rep
             return rep
 
+    def post_res_json(self):
+        '''
+        每次循环检查res.json是否有完成的任务结果
+        :return:{'stask': {'args_str': '', 'stask_id': 805, 'script_name': 'dd.sh'}} or {}
+        '''
+        with open(self.task_res_path, 'rb') as f:
+            res_json = json.load(f)
+        # if res_json:
+        res_json_copy = copy.deepcopy(res_json)  # copy一份原list来解决for循环索引串位问题
+        try:
+            stask_res = {"hostname":self.hostname,"res":[]}
+            for task_res in res_json:
+                '''1:新任务 2:执行完成 3:执行失败 4:执行暂停 5:执行中'''
+                if task_res["status_code"] == 2 or task_res["status_code"] == 3:
+                    finish_task = res_json_copy.pop(res_json.index(task_res))
+                    stask_res["res"].append(finish_task)
+                    # print(res_json_copy)
+                    json.dump(res_json_copy, open(self.task_res_path, 'wb'))
+            print('[%s]POST Task_res:%s to server' %(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),stask_res))
+            response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
+            rep = json.loads(response.text)
+            return rep
+        except requests.ConnectionError, e:
+            rep = {'code': 3, 'msg': str(e)}
+            print rep
+        except ValueError, e:
+            rep = {'code': 3, 'msg': str(e)}
+            print rep
+            return rep
+        
     @property
     def auth_header_val(self):
         ctime = str(time.time())
@@ -94,15 +130,21 @@ class AgentClient(BaseClient):
         task_list = rep.get('task',None)
         if task_list:
             self.post_task_res(task_list)
-        # 查询server端返回结果是否有主机任务要执行
-        server_task_list = rep.get('stask',None)
-        from task_handler.do_task import Do_task
-        dt_obj = Do_task()
-        if server_task_list:
-            p = Process(target=dt_obj.do_stask,args=(server_task_list,))
-            p.start()
 
-        dt_obj.post_res_json()
+    def check_task(self):
+        rep = self.post_res_json()
+        # 查询server端返回结果是否有主机任务要执行
+        stask = rep.get('stask')
+        if stask:
+            '''
+            {'args_str': '', 'stask_id': 805, 'script_name': 'dd.sh'}
+            '''
+            from task_handler.do_task import Do_task
+            dt_obj = Do_task(stask['stask_id'],stask['script_name'],stask['args_str'])
+            p = Process(target=dt_obj.stask_process)
+            p.start()
+        # 
+        # dt_obj.post_res_json()
     """    
     def post_res_json(self):
         '''

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/client.py" line="38" />
+    <bookmark url="file://$PROJECT_DIR$/src/client.py" line="44" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="585c2ca0-5906-44f3-a855-6b5e90228694" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/MegaSAS.log" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MegaSAS.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task_handler/do_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/do_task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/do_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/do_task_mult.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/dd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/dd/dd.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/dd10m.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/dd10m/dd10m.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/dd6m.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/dd6m/dd6m.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/dd8m.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/dd8m/dd8m.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/hostname.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/hostname/hostname.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/ls.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/ls/ls.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_handler/script/pwd.sh" beforeDir="false" afterPath="$PROJECT_DIR$/task_handler/script/pwd/pwd.sh" afterDir="false" />
     </list>
     <ignored path="auto_client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,16 +70,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="script.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/script.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
+              <folding>
+                <element signature="e#25#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="849">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="402">
+              <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
               <folding>
                 <element signature="e#25#40#0" expanded="true" />
+                <element signature="e#1669#2080#0" />
+                <element signature="e#2209#3038#0" />
                 <element signature="e#3358#8312#1" />
-                <element signature="e#8327#8431#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="res.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task_handler/res/res.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -77,11 +109,29 @@
       <file leaf-file-name="do_task.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task_handler/do_task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+            <state relative-caret-position="253">
+              <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
               <folding>
                 <element signature="e#117#139#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dd6m.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task_handler/script/dd6m/dd6m.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dd.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task_handler/script/dd/dd.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -113,9 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/__init__.py" />
-        <option value="$PROJECT_DIR$/files/res.json" />
-        <option value="$PROJECT_DIR$/files/dera_ssd.out" />
         <option value="$PROJECT_DIR$/src/plugins/dera_ssd.py" />
         <option value="$PROJECT_DIR$/files/disk.out" />
         <option value="$PROJECT_DIR$/conf/__init__.py" />
@@ -138,7 +185,6 @@
         <option value="$PROJECT_DIR$/bin/s.py" />
         <option value="$PROJECT_DIR$/bin/d.py" />
         <option value="$PROJECT_DIR$/bin/__init__.py" />
-        <option value="$PROJECT_DIR$/src/script.py" />
         <option value="$PROJECT_DIR$/bin/run_daemon.py" />
         <option value="$PROJECT_DIR$/bin/run.py" />
         <option value="$PROJECT_DIR$/src/test.py" />
@@ -162,8 +208,12 @@
         <option value="$PROJECT_DIR$/task_handler/script/ls.sh" />
         <option value="$PROJECT_DIR$/task_handler/script/pwd.sh" />
         <option value="$PROJECT_DIR$/task_handler/script/post_test.py" />
-        <option value="$PROJECT_DIR$/task_handler/do_task.py" />
+        <option value="$PROJECT_DIR$/task_handler/script/do_task.py" />
+        <option value="$PROJECT_DIR$/src/script.py" />
         <option value="$PROJECT_DIR$/src/client.py" />
+        <option value="$PROJECT_DIR$/task_handler/script/dd/dd.sh" />
+        <option value="$PROJECT_DIR$/task_handler/script/dd6m/dd6m.sh" />
+        <option value="$PROJECT_DIR$/task_handler/do_task.py" />
       </list>
     </option>
   </component>
@@ -179,8 +229,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="71" />
     <option name="y" value="84" />
-    <option name="width" value="1358" />
-    <option name="height" value="774" />
+    <option name="width" value="1366" />
+    <option name="height" value="764" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -230,19 +280,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/task_handler/script" />
-      <recent name="$PROJECT_DIR$/script/pwd" />
-      <recent name="$PROJECT_DIR$/script/ls" />
-      <recent name="$PROJECT_DIR$/script/hostname" />
-      <recent name="$PROJECT_DIR$/script/dd" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test_script" />
-      <recent name="$PROJECT_DIR$/task_handler" />
-      <recent name="$PROJECT_DIR$/task_script" />
-      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin\pk" />
-      <recent name="C:\Users\Administrator\PycharmProjects\auto_client\bin" />
+      <recent name="$PROJECT_DIR$/task_handler/script/pwd" />
+      <recent name="$PROJECT_DIR$/task_handler/script/ls" />
+      <recent name="$PROJECT_DIR$/task_handler/script/hostname" />
+      <recent name="$PROJECT_DIR$/task_handler/script/dd10m" />
+      <recent name="$PROJECT_DIR$/task_handler/script/dd8m" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/task_handler/script/pwd" />
+      <recent name="$PROJECT_DIR$/task_handler/script/ls" />
+      <recent name="$PROJECT_DIR$/task_handler/script/hostname" />
+      <recent name="$PROJECT_DIR$/task_handler/script/dd10m" />
+      <recent name="$PROJECT_DIR$/task_handler/script/dd8m" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -271,7 +321,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/task_handler/do_task.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/task_handler/do_task_mult.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -493,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537250428356</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="执行脚本名称去掉&quot;.sh&quot;后缀，以server发来的为准">
+      <created>1537325615978</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1537325615978</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -507,18 +564,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="1019" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32936978" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50106955" side_tool="true" weight="0.32461354" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50160426" side_tool="true" weight="0.29964328" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.29369798" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32818073" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936978" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49893048" visible="true" weight="0.29964328" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13208556" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4983957" visible="true" weight="0.29964328" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13208556" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32994652" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32936978" />
       <window_info anchor="right" id="SciView" order="0" weight="0.32994652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
@@ -529,7 +586,6 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32936978" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,73 +641,15 @@
     <MESSAGE value="添加上传任务生成文件方法" />
     <MESSAGE value="修改任务进程执行方式，任务上传方式，文件上传方式" />
     <MESSAGE value="将任务执行和上传封装到Do_task类" />
-    <option name="LAST_COMMIT_MESSAGE" value="将任务执行和上传封装到Do_task类" />
+    <MESSAGE value="执行脚本名称去掉&quot;.sh&quot;后缀，以server发来的为准" />
+    <option name="LAST_COMMIT_MESSAGE" value="执行脚本名称去掉&quot;.sh&quot;后缀，以server发来的为准" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/MegaSAS.log">
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/thread_pool_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/harker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/show_dic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_script/open_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib64/python2.7/subprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="649" column="8" selection-start-line="649" selection-start-column="8" selection-end-line="649" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/disk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -725,42 +723,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/queue_test.py" />
-    <entry file="file://$PROJECT_DIR$/task_handler/script/dd10m.sh">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd10m/dd10m.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/dd8m.sh">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd8m/dd8m.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/dd6m.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/dd.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/ls.sh">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/ls/ls.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/pwd.sh">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/pwd/pwd.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
@@ -778,13 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -859,22 +836,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task_handler/script/hostname.sh">
+    <entry file="file://$PROJECT_DIR$/task_handler/script/hostname/hostname.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#25#40#0" expanded="true" />
-            <element signature="e#3358#8312#1" />
-            <element signature="e#8327#8431#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,6 +850,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd6m/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd10m/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd8m/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/hostname/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/pwd/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/ls/res/res.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1552730408/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="4325" column="8" selection-start-line="4325" selection-start-column="8" selection-end-line="4325" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/do_task_mult.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="e#117#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/task_handler/res/res.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -892,10 +895,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#25#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+            <element signature="e#1669#2080#0" />
+            <element signature="e#2209#3038#0" />
+            <element signature="e#3358#8312#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd6m/dd6m.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task_handler/script/dd/dd.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/task_handler/do_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+        <state relative-caret-position="253">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
           <folding>
             <element signature="e#117#139#0" expanded="true" />
           </folding>
