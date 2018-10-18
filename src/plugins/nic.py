@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*-
-
+from .base import BasePlugin
 import os
 import re
 from lib.config import settings
 
-class Nic(object):
-    def process(self, cmd_func, test):
+class Nic(BasePlugin):
+    def linux(self, cmd_func, test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/nic.out'), 'r').read()
             interfaces_info = self._interfaces_ip(output)
@@ -206,3 +206,6 @@ class Nic(object):
                 value['ipaddrs'] = '/'.join(ipaddrs)
                 value['netmask'] = '/'.join(netmask)
                 del value['inet']
+                
+    def win(self,cmd_func,test):
+        pass

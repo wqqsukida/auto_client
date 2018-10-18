@@ -37,7 +37,7 @@ class PluginManager(object):
         for k,v in self.plugin_items.items():
             # 找到v字符串：src.plugins.nic.Nic，
             # src.plugins.disk.Disk
-            info = {'status':True,'data': None,'msg':None}
+            info = {'status':True,'data': {},'msg':None}
             try:
                 module_path,cls_name = v.rsplit('.',1)
                 module = importlib.import_module(module_path)

@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
-
+from .base import BasePlugin
 import re
 import os
 from lib.config import settings
 from lib import convert
 
-class Memory(object):
-    def process(self, cmd_func, test):
+class Memory(BasePlugin):
+    def linux(self, cmd_func, test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/memory.out'), 'r').read()
 
@@ -56,3 +56,6 @@ class Memory(object):
             ram_dict[segment['slot']] = segment
 
         return ram_dict
+    
+    def win(self,cmd_func,test):
+        pass

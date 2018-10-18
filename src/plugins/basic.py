@@ -1,12 +1,14 @@
 # -*- coding: UTF-8 -*-
+from .base import BasePlugin
+from lib.config import settings
 
-class Basic(object):
+class Basic(BasePlugin):
 
     @classmethod
     def initial(cls):
         return cls()
 
-    def process(self,cmd_func,test):
+    def linux(self,cmd_func,test):
         if test:
             output = {
                 'os_platform': "linux",
@@ -14,7 +16,8 @@ class Basic(object):
                 'hostname': 'c4.com',
                 'cpu_physical_count': '4',
                 'cpu_count': '8',
-                'cpu_model': 'X86'
+                'cpu_model': 'X86',
+                'client_version': settings.CLIENT_VERSION
             }
         else:
             output = {
@@ -23,6 +26,10 @@ class Basic(object):
                 'hostname': cmd_func("hostname").strip(),
                 'cpu_physical_count' : cmd_func("sudo cat /proc/cpuinfo | grep 'physical id' | sort | uniq | wc -l"),
                 'cpu_count' : cmd_func("sudo cat /proc/cpuinfo | grep 'processor' | wc -l"),
-                'cpu_model' : cmd_func("sudo cat /proc/cpuinfo | grep name | cut -f2 -d:| uniq -c")
+                'cpu_model' : cmd_func("sudo cat /proc/cpuinfo | grep name | cut -f2 -d:| uniq -c"),
+                'client_version': settings.CLIENT_VERSION
             }
         return output
+    
+    def win(self,cmd_func,test):
+        pass

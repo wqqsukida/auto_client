@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*-
-
+from .base import BasePlugin
 import time
 import os,re
 from lib.config import settings
 
-class Nvme_ssd(object):
-    def process(self, cmd_func, test):
+class Nvme_ssd(BasePlugin):
+    def linux(self, cmd_func, test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/nvme_ssd.out'), 'r').read()
 
@@ -77,3 +77,6 @@ class Nvme_ssd(object):
             return {'task_id':task_id,'task_res':response}
         else:
             return response
+
+    def win(self,cmd_func,test):
+        pass 

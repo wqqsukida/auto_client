@@ -27,3 +27,5 @@ NVME_TOOL_PATH = "/home/wuyifei/code/s16autohost/s5day91/auto_client/nvme-cli-ma
 SSH_USER = "root"
 SSH_PORT = 22
 SSH_PWD = "sdf"
+
+CLIENT_VERSION = "v1.1.8"

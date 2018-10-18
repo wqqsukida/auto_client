@@ -1,10 +1,10 @@
 # -*- coding: UTF-8 -*-
-
+from .base import BasePlugin
 import os
 from lib.config import settings
 
-class Board(object):
-    def process(self, cmd_func, test):
+class Board(BasePlugin):
+    def linux(self, cmd_func, test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/board.out'), 'r').read()
         else:
@@ -28,3 +28,6 @@ class Board(object):
 
         return result
 
+
+    def win(self,cmd_func,test):
+        pass

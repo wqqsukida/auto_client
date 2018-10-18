@@ -1,12 +1,12 @@
 # -*- coding: UTF-8 -*-
-
+from .base import BasePlugin
 import re
 import os
 from lib.config import settings
 
-class Disk(object):
+class Disk(BasePlugin):
 
-    def process(self,cmd_func,test):
+    def linux(self,cmd_func,test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/disk.out'), 'r').read()
         else:
@@ -54,3 +54,6 @@ class Disk(object):
             if needle.startswith(key):
                 return value
         return False
+    
+    def win(self,cmd_func,test):
+        pass

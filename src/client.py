@@ -123,7 +123,7 @@ class AgentClient(BaseClient):
                 ff.write(new_hostname)
         else:
             server_dict['basic']['data']['hostname'] = old_hostname
-        print('[%s]POST [client info] to server'%datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        print('[%s]POST %s to server'%(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'[ client info ]'))
         # 将client端信息发送给server
         rep = self.post_server_info(server_dict)
         # 查询server端返回结果是否有ssd任务要执行

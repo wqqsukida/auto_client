@@ -4,7 +4,7 @@ import os,platform
 from lib.config import settings
 
 class Cpuinfo(object):
-    def process(self, cmd_func, test):
+    def linux(self, cmd_func, test):
         if test:
             output = open(os.path.join(settings.BASEDIR, 'files/cpuinfo.out'), 'r').read()
 
@@ -36,3 +36,6 @@ class Cpuinfo(object):
         #     response['processor%s' % p] = key_map
         #     p+=1
         return response
+
+    def win(selfcmd_func,test):
+        pass
