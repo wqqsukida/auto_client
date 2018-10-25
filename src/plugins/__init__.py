@@ -2,8 +2,10 @@
 
 import importlib
 import requests
-from lib.config import settings
 import traceback
+from lib.config import settings
+from lib.log import logger
+
 # def func():
 #     server_info = {}
 #     for k,v in settings.PLUGIN_ITEMS.items():
@@ -50,8 +52,10 @@ class PluginManager(object):
                 ret = obj.process(self.exec_cmd,self.test)
                 info['data'] = ret
             except Exception as e:
+                msg = traceback.format_exc()
                 info['status'] = False
-                info['msg'] = traceback.format_exc()
+                info['msg'] = msg
+                logger.error(msg)
 
             server_info[k] = info
         return server_info

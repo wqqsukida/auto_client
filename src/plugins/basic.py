@@ -32,4 +32,8 @@ class Basic(BasePlugin):
         return output
     
     def win(self,cmd_func,test):
-        pass
+        output = {
+
+        }
+        
+        return output

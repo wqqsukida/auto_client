@@ -6,6 +6,7 @@ from src.plugins import PluginManager
 from lib.config import settings
 # from concurrent.futures import ThreadPoolExecutor
 from multiprocessing import Process,Pool
+from lib.log import logger
 import json
 import os
 import copy_reg
@@ -17,6 +18,7 @@ import uuid
 import subprocess
 import copy
 import importlib
+import traceback
 
 def _pickle_method(m):
     if m.im_self is None:
@@ -51,11 +53,15 @@ class BaseClient(object):
             rep = json.loads(response.text)
             return rep
         except requests.ConnectionError,e :
-            rep = { 'code': 3, 'msg':str(e)}
+            msg = traceback.format_exc()
+            rep = { 'code': 3, 'msg':msg}
+            logger.error(msg)
             print rep
             return rep
         except ValueError,e :
-            rep = { 'code': 3, 'msg':str(e)}
+            msg = traceback.format_exc()
+            rep = { 'code': 3, 'msg':msg}
+            logger.error(msg)
             print rep
             return rep
 
@@ -77,15 +83,24 @@ class BaseClient(object):
                     stask_res["res"].append(finish_task)
                     # print(res_json_copy)
                     json.dump(res_json_copy, open(self.task_res_path, 'wb'))
-            print('[%s]POST Task_res:%s to server' %(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),stask_res))
+            
+            print_info = '[%s]POST Task_res:%s to server' %(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),stask_res)
+            logger.info(print_info)
+            print(print_info)
+            
             response = requests.post(self.stask_api, json=stask_res, headers={'auth-token': self.auth_header_val})
             rep = json.loads(response.text)
             return rep
         except requests.ConnectionError, e:
-            rep = {'code': 3, 'msg': str(e)}
+            msg = traceback.format_exc()
+            logger.error(msg)
+            rep = {'code': 3, 'msg': msg}
             print rep
+            return rep
         except ValueError, e:
-            rep = {'code': 3, 'msg': str(e)}
+            msg = traceback.format_exc()
+            logger.error(msg)
+            rep = {'code': 3, 'msg': msg}
             print rep
             return rep
         
@@ -121,9 +136,19 @@ class AgentClient(BaseClient):
             """第一次运行"""
             with open(cert_path,mode='w') as ff:
                 ff.write(new_hostname)
+            server_dict['type'] = 'create'
         else:
-            server_dict['basic']['data']['hostname'] = old_hostname
-        print('[%s]POST %s to server'%(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'[ client info ]'))
+            if new_hostname == old_hostname:
+                server_dict['type'] = 'update'
+            else:
+                server_dict['type'] = 'host_update'
+                server_dict['cert'] = old_hostname
+                # server_dict['basic']['data']['hostname'] = old_hostname
+                with open(cert_path,'w') as f:
+                    f.write(new_hostname)
+        print_info = '[%s]POST %s to server'%(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'[ client info ]')
+        print(print_info)
+        logger.info(print_info)
         # 将client端信息发送给server
         rep = self.post_server_info(server_dict)
         # 查询server端返回结果是否有ssd任务要执行
@@ -330,8 +355,10 @@ class AgentClient(BaseClient):
 
     def task_res_handler(self,task_res):
         try:
-            print('[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                                                                      task_res))
+            print_info = '[{0}]POST [client task_res: {1}] to server'.format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                                                      task_res)
+            print(print_info)
+            logger.info(print_info)
             response = requests.post(self.task_api, json=task_res, headers={'auth-token': self.auth_header_val})
         except requests.ConnectionError,e:
             rep = {'code':3,'msg':str(e)}
