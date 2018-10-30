@@ -2,6 +2,7 @@
 from .base import BasePlugin
 import re
 import os
+import wmi
 from lib.config import settings
 
 class Disk(BasePlugin):
@@ -56,4 +57,12 @@ class Disk(BasePlugin):
         return False
     
     def win(self,cmd_func,test):
-        pass
+        rep = {}
+        c = wmi.WMI()
+        for drive in c.Win32_LogicalDisk(DriveType=3):
+
+            space = 100.0 * long(drive.FreeSpace) / long(drive.Size)
+            # print "%s has %0.2f%% free" % (drive.Name, space)
+
+
+        return rep

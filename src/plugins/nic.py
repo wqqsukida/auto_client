@@ -208,4 +208,16 @@ class Nic(BasePlugin):
                 del value['inet']
                 
     def win(self,cmd_func,test):
-        pass
+        import wmi
+        info_dic = {}
+        c = wmi.WMI()
+        # 获取MAC和IP地址
+        for interface in c.Win32_NetworkAdapterConfiguration(IPEnabled=1):
+            interface_info = {}
+            interface_info['hwaddr'] = interface.MACAddress
+            interface_info['netmask'] = interface.IPSubnet[0]
+            interface_info['ipaddrs'] = interface.IPAddress[0]
+            interface_info['up'] = True
+            info_dic[interface.Caption] = interface_info
+
+        return info_dic

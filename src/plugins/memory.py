@@ -58,4 +58,17 @@ class Memory(BasePlugin):
         return ram_dict
     
     def win(self,cmd_func,test):
-        pass
+        import wmi
+        c = wmi.WMI()
+        result = {}
+
+        for memory in c.Win32_PhysicalMemory():
+            memory_info = {}
+            memory_info['capacity'] = memory
+            memory_info['slot'] = memory
+            memory_info['model'] = memory
+            memory_info['speed'] = memory
+            memory_info['manufacturer'] = memory
+            memory_info['sn'] = memory
+            result[memory] = memory_info
+        return result

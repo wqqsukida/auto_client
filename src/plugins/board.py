@@ -30,4 +30,17 @@ class Board(BasePlugin):
 
 
     def win(self,cmd_func,test):
-        pass
+        import wmi
+        c = wmi.WMI()
+        for board_info in c.Win32_BaseBoard():
+            serial_number = board_info.SerialNumber
+            manufacturer = board_info.Manufacturer
+            product_name = board_info.Product
+
+        result = {
+            'manufacturer': manufacturer,
+            'model': product_name,
+            'sn': serial_number,
+        }
+
+        return result

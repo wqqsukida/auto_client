@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 from .base import BasePlugin
 from lib.config import settings
+import platform
+import socket
 
 class Basic(BasePlugin):
 
@@ -32,8 +34,20 @@ class Basic(BasePlugin):
         return output
     
     def win(self,cmd_func,test):
+        import wmi
+        c = wmi.WMI()
+        for p in c.Win32_Processor():
+            cpu_physical_count = str(p.NumberOfCores)
+            cpu_count = str(p.NumberOfLogicalProcessors)
+            cpu_model = p.Name
         output = {
-
+            'os_platform': platform.platform(),
+            'os_version': platform.version(),
+            'hostname': socket.gethostname(),
+            'cpu_physical_count': cpu_physical_count,
+            'cpu_count': cpu_count,
+            'cpu_model': cpu_model,
+            'client_version': settings.CLIENT_VERSION
         }
-        
+
         return output

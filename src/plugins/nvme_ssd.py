@@ -79,4 +79,5 @@ class Nvme_ssd(BasePlugin):
             return response
 
     def win(self,cmd_func,test):
-        pass 
+        result = {}
+        return result
