@@ -5,6 +5,7 @@
 # FileName: do_task.py
 from src import client
 from lib.config import settings
+from lib.log import logger
 from multiprocessing import Pool,Process
 import json
 import copy
@@ -12,6 +13,7 @@ import requests
 import datetime
 import os
 import subprocess
+import traceback
 
 class Do_task(client.BaseClient):
 
@@ -62,34 +64,35 @@ class Do_task(client.BaseClient):
                 run_time = end_time - start_time
                 stask_res["run_time"] = str(run_time)
                 stask_res["status_code"] = 3
-                stask_res["data"][self.script_name] = str(e)
-                stask_res["message"] = str(e)
+                msg = traceback.format_exc()
+                stask_res["data"][self.script_name] = msg
+                stask_res["message"] = msg
+                logger.error(msg)
         else:
             stask_res["status_code"] = 3
-            stask_res["data"][self.script_name] = "client can not find task script!"
-
+            msg = "client can not find task script!"
+            stask_res["data"][self.script_name] = msg
+            stask_res["data"][self.script_name] = msg
+            stask_res["message"] = msg
+            logger.error(msg)
         self.res_callback(stask_res)
         self.post_file(stask_res)
         # return stask_res
     
     def res_callback(self, stask_res):
-        try:
-            # rep = requests.post(self.stask_api, json=st_res, headers={'auth-token': self.auth_header_val})
-            # print('[{0}]POST [client stask_res: {1}] to server'.format(
-            #     datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), st_res))
-            # 添加任务结果至res.json
-            with open(self.task_res_path, 'rb') as f:
-                res_json = json.load(f)
-            res_json.append(stask_res)
-            # print(res_json)
-            json.dump(res_json, open(self.task_res_path, 'wb'))
-           ############################
-            obj = client.AgentClient()#
-            obj.check_task()          #
-           ############################
-        except requests.ConnectionError, e:
-            rep = {'code': 3, 'msg': str(e)}
-            print rep
+        # rep = requests.post(self.stask_api, json=st_res, headers={'auth-token': self.auth_header_val})
+        # print('[{0}]POST [client stask_res: {1}] to server'.format(
+        #     datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), st_res))
+        # 添加任务结果至res.json
+        with open(self.task_res_path, 'rb') as f:
+            res_json = json.load(f)
+        res_json.append(stask_res)
+        # print(res_json)
+        json.dump(res_json, open(self.task_res_path, 'wb'))
+       ############################
+        obj = client.AgentClient()#
+        obj.check_task()          #
+       ############################
         
     def post_file(self,stask_res):
         # 上传任务文件
@@ -102,11 +105,15 @@ class Do_task(client.BaseClient):
                               headers={'auth-token': self.auth_header_val},
                               files={'task_file': open(res_file, 'rb')},
                               )
-                print('[{0}]POST [task_file: {1}] to server'.format(
-                    datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), res_file))
+                print_info = '[{0}]POST [task_file: {1}] to server'.format(
+                    datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), res_file)
+                print print_info
+                logger.info(print_info)
             except requests.ConnectionError, e:
-                rep = {'code': 3, 'msg': str(e)}
+                msg = traceback.format_exc()
+                rep = {'code': 3, 'msg': msg}
                 print rep
+                logger.error(rep)
         else:
             rep = {}
         

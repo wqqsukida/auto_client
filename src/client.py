@@ -155,7 +155,18 @@ class AgentClient(BaseClient):
         task_list = rep.get('task',None)
         if task_list:
             self.post_task_res(task_list)
-
+#########################################################################################        
+# Creat AgentClient() obj run check_task(): 
+#   check_task() will run a sub process to do this task
+# check_task: post_res_json() -> stask_process() -> res_callback() -> post_file()
+#                                                           |
+#            _______________________________________________|
+#           |                                                 
+#           | 
+#       Creat AgentClient() obj run check_task():
+#           run another sub process to do the new  receive task
+#       check_task: post_res_json() -> stask_process() -> res_callback() -> post_file()
+#########################################################################################
     def check_task(self):
         rep = self.post_res_json()
         # 查询server端返回结果是否有主机任务要执行

@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from .base import BasePlugin
 from lib.config import settings
+import platform,socket
 
 class Basic(BasePlugin):
 
@@ -13,7 +14,7 @@ class Basic(BasePlugin):
             output = {
                 'os_platform': "linux",
                 'os_version': "CentOS release 6.6 (Final)\nKernel \r on an \m",
-                'hostname': 'c4.com',
+                'hostname': 'deraops.com',
                 'cpu_physical_count': '4',
                 'cpu_count': '8',
                 'cpu_model': 'X86',
@@ -33,7 +34,13 @@ class Basic(BasePlugin):
     
     def win(self,cmd_func,test):
         output = {
-
+            'os_platform': platform.platform(),
+            'os_version': platform.version(),
+            'hostname': socket.gethostname(),
+            'cpu_physical_count': None,
+            'cpu_count': None,
+            'cpu_model': '',
+            'client_version': settings.CLIENT_VERSION
         }
         
         return output
