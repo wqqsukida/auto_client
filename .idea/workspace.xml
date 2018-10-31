@@ -4,18 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/client.py" line="46" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="585c2ca0-5906-44f3-a855-6b5e90228694" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/auto_client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/auto_client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="585c2ca0-5906-44f3-a855-6b5e90228694" name="Default" comment="20181030更新:&#10;1.添加获取windows端主板、cpu、网卡等信息方法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/cert.txt" beforeDir="false" afterPath="$PROJECT_DIR$/conf/cert.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/disk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/disk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/memory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plugins/nic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/nic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/nvme_ssd.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/nvme_ssd.py" afterDir="false" />
     </list>
     <ignored path="auto_client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,36 +60,39 @@
     <session id="1554577908">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="15" />
+          <entry key="py" value="18" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="15" />
+          <entry key="Python" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="2881" />
+          <entry key="Python Console" value="3457" />
           <entry key="dummy" value="9" />
-          <entry key="py" value="1269" />
+          <entry key="py" value="1686" />
+          <entry key="txt" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="4150" />
+          <entry key="PLAIN_TEXT" value="57" />
+          <entry key="Python" value="5143" />
         </counts>
       </usages-collector>
     </session>
@@ -107,23 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
-              <folding>
-                <element signature="e#25#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/plugins/basic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+            <state relative-caret-position="-44">
+              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
               <folding>
                 <element signature="e#24#52#0" expanded="true" />
               </folding>
@@ -134,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plugins/nic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="212" column="21" selection-start-line="212" selection-start-column="21" selection-end-line="212" selection-end-column="21" />
+            <state relative-caret-position="127">
+              <caret line="222" column="9" lean-forward="true" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
               <folding>
                 <element signature="e#24#52#0" expanded="true" />
                 <element signature="e#531#895#0" />
@@ -145,6 +128,7 @@
                 <element signature="e#3521#3870#0" />
                 <element signature="e#3915#7228#0" />
                 <element signature="e#7280#7789#0" />
+                <element signature="e#8341#11760#1" />
               </folding>
             </state>
           </provider>
@@ -153,20 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plugins/memory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/plugins/nvme_ssd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
-              <folding>
-                <element signature="e#24#52#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1518">
+              <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -174,22 +146,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testwmi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-880">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+            <state relative-caret-position="1232">
+              <caret line="60" column="39" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="45" />
               <folding>
                 <marker date="1540798046077" expanded="true" signature="2475:2480" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/plugins/disk.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-              <folding>
-                <element signature="e#24#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -202,6 +162,19 @@
               <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               <folding>
                 <element signature="e#25#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/plugins/disk.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="132" selection-start-line="132" selection-end-line="132" />
+              <folding>
+                <element signature="e#24#52#0" expanded="true" />
+                <element signature="e#2329#4695#1" />
               </folding>
             </state>
           </provider>
@@ -296,13 +269,13 @@
         <option value="$PROJECT_DIR$/lib/log.py" />
         <option value="$PROJECT_DIR$/wmi.py" />
         <option value="$PROJECT_DIR$/testwmi.py" />
-        <option value="$PROJECT_DIR$/src/plugins/disk.py" />
         <option value="$PROJECT_DIR$/src/client.py" />
-        <option value="$PROJECT_DIR$/src/plugins/nic.py" />
         <option value="$PROJECT_DIR$/src/plugins/basic.py" />
         <option value="$PROJECT_DIR$/src/plugins/board.py" />
         <option value="$PROJECT_DIR$/src/plugins/memory.py" />
         <option value="$PROJECT_DIR$/src/plugins/nvme_ssd.py" />
+        <option value="$PROJECT_DIR$/src/plugins/disk.py" />
+        <option value="$PROJECT_DIR$/src/plugins/nic.py" />
       </list>
     </option>
   </component>
@@ -324,6 +297,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,7 +320,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -655,7 +628,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539842488550</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="20181030更新:&#10;1.添加获取windows端主板、cpu、网卡等信息方法">
+      <created>1540885011329</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1540885011329</updated>
+    </task>
+    <task id="LOCAL-00017" summary="20181031更新:&#10;1.添加获取windows端硬盘信息方法">
+      <created>1540957209078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1540957209078</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -671,7 +658,7 @@
     <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18469387" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
@@ -683,9 +670,9 @@
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49946523" weight="0.32936978" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50213903" side_tool="true" weight="0.3174792" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946523" weight="0.46153846" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49786097" visible="true" weight="0.41367522" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5020408" side_tool="true" weight="0.46153846" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4979592" weight="0.46153846" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49786097" visible="true" weight="0.41025642" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946523" weight="0.32649574" />
       <window_info anchor="right" id="SciView" order="0" weight="0.32994652" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
@@ -694,7 +681,7 @@
       <window_info anchor="right" id="Database" order="4" weight="0.32994652" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18163265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
@@ -708,7 +695,7 @@
       <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49946523" weight="0.32936978" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50213903" side_tool="true" weight="0.3174792" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49946523" weight="0.46153846" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49786097" weight="0.41367522" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49786097" visible="true" weight="0.4129693" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49946523" weight="0.32649574" />
       <window_info anchor="right" id="SciView" order="0" weight="0.32994652" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
@@ -773,10 +760,11 @@
     <MESSAGE value="执行脚本名称去掉&quot;.sh&quot;后缀，以server发来的为准" />
     <MESSAGE value="客户端执行任务模式变动：改为一次性开启一个子进程执行一个任务脚本并立即返回结果" />
     <MESSAGE value="20181019更新:&#10;1.客户端返回字典'data'修改为空字典(原None)防止报错&#10;2.客户端插件类添加基类(必须实现win和linux方法),并修改客户端所有插件类下的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="20181019更新:&#10;1.客户端返回字典'data'修改为空字典(原None)防止报错&#10;2.客户端插件类添加基类(必须实现win和linux方法),并修改客户端所有插件类下的方法" />
+    <MESSAGE value="20181030更新:&#10;1.添加获取windows端主板、cpu、网卡等信息方法" />
+    <MESSAGE value="20181031更新:&#10;1.添加获取windows端硬盘信息方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="20181031更新:&#10;1.添加获取windows端硬盘信息方法" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_script/post_test.py" />
     <entry file="file://$PROJECT_DIR$/test_script/rpost.py" />
     <entry file="file://$PROJECT_DIR$/files/board.out">
       <provider selected="true" editor-type-id="text-editor" />
@@ -815,13 +803,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-70">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -946,22 +927,67 @@
     <entry file="file://$PROJECT_DIR$/conf/cert.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/auto_client/venv/Lib/site-packages/wmi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-846">
+          <caret line="1302" column="6" selection-start-line="1302" selection-start-column="6" selection-end-line="1302" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/nvme_ssd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/memory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1518">
+          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testwmi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="60" column="39" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="45" />
+          <folding>
+            <marker date="1540798046077" expanded="true" signature="2475:2480" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1342">
           <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           <folding>
             <element signature="e#25#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -976,47 +1002,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/1906910835/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="150" column="31" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
-          <folding>
-            <element signature="e#25#40#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="96">
+          <caret line="3066" column="8" selection-start-line="3066" selection-start-column="8" selection-end-line="3066" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/auto_client/venv/Lib/site-packages/wmi.py">
+    <entry file="file://$PROJECT_DIR$/src/plugins/disk.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-846">
-          <caret line="1302" column="6" selection-start-line="1302" selection-start-column="6" selection-end-line="1302" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testwmi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-880">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-          <folding>
-            <marker date="1540798046077" expanded="true" signature="2475:2480" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        <state relative-caret-position="149">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="e#24#52#0" expanded="true" />
+            <element signature="e#2329#4695#1" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/nic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="212" column="21" selection-start-line="212" selection-start-column="21" selection-end-line="212" selection-end-column="21" />
+        <state relative-caret-position="127">
+          <caret line="222" column="9" lean-forward="true" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
           <folding>
             <element signature="e#24#52#0" expanded="true" />
             <element signature="e#531#895#0" />
@@ -1026,31 +1033,15 @@
             <element signature="e#3521#3870#0" />
             <element signature="e#3915#7228#0" />
             <element signature="e#7280#7789#0" />
+            <element signature="e#8341#11760#1" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/nvme_ssd.py">
+    <entry file="file://$PROJECT_DIR$/src/plugins/basic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/memory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/disk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+        <state relative-caret-position="-44">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
           <folding>
             <element signature="e#24#52#0" expanded="true" />
           </folding>
