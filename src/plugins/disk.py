@@ -2,7 +2,6 @@
 from .base import BasePlugin
 import re
 import os
-import wmi
 from lib.config import settings
 
 class Disk(BasePlugin):
@@ -58,6 +57,7 @@ class Disk(BasePlugin):
     
     def win(self,cmd_func,test):
         rep = {}
+        import wmi
         c = wmi.WMI()
         for drive in c.Win32_LogicalDisk(DriveType=3):
 
