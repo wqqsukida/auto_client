@@ -64,11 +64,11 @@ class Memory(BasePlugin):
 
         for memory in c.Win32_PhysicalMemory():
             memory_info = {}
-            memory_info['capacity'] = memory
-            memory_info['slot'] = memory
-            memory_info['model'] = memory
-            memory_info['speed'] = memory
-            memory_info['manufacturer'] = memory
-            memory_info['sn'] = memory
-            result[memory] = memory_info
+            memory_info['capacity'] = '%.2f'%(float(memory.Capacity)/1024/1024/1024)
+            memory_info['slot'] = memory.BankLabel
+            memory_info['model'] = '%s'%memory.MemoryType
+            memory_info['speed'] = '%s'%memory.Speed
+            memory_info['manufacturer'] = memory.Manufacturer
+            memory_info['sn'] = memory.SerialNumber
+            result[memory.BankLabel] = memory_info
         return result
