@@ -64,7 +64,7 @@ class Memory(BasePlugin):
 
         for memory in c.Win32_PhysicalMemory():
             memory_info = {}
-            memory_info['capacity'] = '%.2f'%(float(memory.Capacity)/1024/1024/1024)
+            memory_info['capacity'] = float('%.2f'%(float(memory.Capacity)/1024/1024/1024))
             memory_info['slot'] = memory.BankLabel
             memory_info['model'] = '%s'%memory.MemoryType
             memory_info['speed'] = '%s'%memory.Speed

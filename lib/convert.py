@@ -14,7 +14,7 @@ def convert_mb_to_gb(value,default=0):
 
     try:
         value = value.strip('MB')
-        result = int(value)
+        result = float(value)
     except Exception as e:
         result = default
 

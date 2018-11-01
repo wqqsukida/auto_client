@@ -2,7 +2,6 @@
 from .base import BasePlugin
 import re
 import os
-import wmi
 from lib.config import settings
 
 class Disk(BasePlugin):
@@ -39,7 +38,7 @@ class Disk(BasePlugin):
                         raw_size = re.search('(\d+\.\d+)', value.strip())
                         if raw_size:
 
-                            temp_dict[name] = raw_size.group()
+                            temp_dict[name] = float(raw_size.group())
                         else:
                             raw_size = '0'
                     else:
@@ -58,13 +57,14 @@ class Disk(BasePlugin):
     
     def win(self,cmd_func,test):
         result = {}
+        import wmi
         c = wmi.WMI()
 
 
         for disk in c.Win32_DiskDrive():
             disk_info = {}
             disk_info['slot'] = '%s'%disk.SCSIBus
-            disk_info['capacity'] = '%.2f'%(float(disk.Size)/1024/1024/1024)
+            disk_info['capacity'] = float('%.2f'%(float(disk.Size)/1024/1024/1024))
             disk_info['model'] = disk.Model
             disk_info['pd_type'] = disk.InterfaceType
             result[disk.SCSIBus] = disk_info
