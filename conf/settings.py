@@ -13,16 +13,16 @@ PLUGIN_ITEMS = {
 }
 
 API_TOKEN = "7d6766a6s5f76safas657889hj78kf90"
-API = "http://10.0.2.17/api/server/"
-TASK_API = "http://10.0.2.17/api/task/"
-STASK_API = "http://10.0.2.17/api/stask/"
-FILE_API = "http://10.0.2.17/api/file/"
+API = "http://10.0.2.20/api/server/"
+TASK_API = "http://10.0.2.20/api/task/"
+STASK_API = "http://10.0.2.20/api/stask/"
+FILE_API = "http://10.0.2.20/api/file/"
 
 TEST = False
 
 MODE = "AGENT" # AGENT/SSH/SALT
 
-NVME_TOOL_PATH = "/home/wuyifei/code/s16autohost/s5day91/auto_client/nvme-cli-master"
+NVME_TOOL_PATH = os.path.join(BASEDIR,'nvme_tool')
 
 SSH_USER = "root"
 SSH_PORT = 22
